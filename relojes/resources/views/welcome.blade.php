@@ -70,7 +70,7 @@
                         <h5 class="header col s12 light">Más de 500 combinaciones posibles, armalo a tu medida!</h5>
                     </div>
                     <div class="row center">
-                        <a id="btnCrear" href="/diseno" class="btn-large waves-effect darken-4">Crear mi reloj</a>
+                        <a id="btnCrear" href="{{ route('diseno') }}" class="btn-large waves-effect darken-4">Crear mi reloj</a>
                     </div>
                     <br><br>
                 </div>

@@ -14,8 +14,10 @@ class CreateMallasTable extends Migration
     public function up()
     {
         Schema::create('mallas', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('partes');
+            $table->increments('id');
+            $table->string('nombre');
+            $table->string('imagen');
+            $table->timestamps();
         });
     }
 

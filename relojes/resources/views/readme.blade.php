@@ -40,7 +40,7 @@ and open the template in the editor.
                 </div>
                 <div class="nav-wrapper" id="barra1">
                   <div class="col s12">
-                    <a href="index.html" class="breadcrumb">Home</a>
+                    <a href="" class="breadcrumb">Home</a>
                     <a href="readme.html" class="breadcrumb">Read me</a>                                       
                   </div>
                 </div>

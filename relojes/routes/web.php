@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/diseno', function () {
     return view('diseno');
-});
+})->name('diseno');
 
 Route::get('/readme', function () {
     return view('readme');

@@ -26,3 +26,11 @@ Route::get('/diseno', function () {
 Route::get('/readme', function () {
     return view('readme');
 });
+
+// OAuth Routes
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+

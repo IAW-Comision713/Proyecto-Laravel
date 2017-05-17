@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreestablecidosTable extends Migration
+class CreateVaciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class CreatePreestablecidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('preestablecidos', function (Blueprint $table) {
-            $table->increments('id');
-            
-            $table->string('nombre');
+        Schema::create('vacios', function (Blueprint $table) {
             
             $table->integer('malla')->unsigned();
             $table->foreign('malla')->references('id')->on('mallas');
@@ -41,6 +38,6 @@ class CreatePreestablecidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('preestablecidos');
+        Schema::dropIfExists('vacios');
     }
 }

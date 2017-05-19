@@ -32,11 +32,11 @@ Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');
 Route::get('/partes/jsonPreestablecidos', 'PartesController@jsonPreestablecidos');
 
 // OAuth Routes
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+//Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 
 Auth::routes();

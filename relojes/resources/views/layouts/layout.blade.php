@@ -28,7 +28,7 @@
     <body>
         <nav class="transparent">
             <div class="nav-wrapper container">
-                <a href="#" class="brand-logo"><img id="img-logo" src="img/logo.png" alt="logo">Clock</a>
+                <a href="{{ route('home') }}" class="brand-logo"><img id="img-logo" src="img/logo.png" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/readme">Readme</a></li>
                     <!-- Authentication Links -->

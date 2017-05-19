@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.layout')
+
+@section('title')
+
+    Logueado
+
+@endsection
 
 @section('content')
 <div class="container">

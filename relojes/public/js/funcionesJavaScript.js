@@ -4,34 +4,42 @@ var preestablecidos;
 var modelovacio;
 
 $(function() {
-    var ajax = new AJAXInteraction("data/personalizables.json", function(data) {
-        personalizables = data;
-        cargarpartes(data);
+    
+     $.ajax({
+        url: "/partes/jsonPartes",
+        context: document.body,
+        success: function (data) {
+            personalizables = data;
+            cargarpartes(data);
+        }
     });
-    ajax.doGet();
     
-    ajax = new AJAXInteraction("data/preestablecidos.json", function(data) {
-        
-        preestablecidos = data;
-        cargarmenupreestablecidos(data.length);
+    $.ajax({
+        url: "/partes/jsonPreestablecidos",
+        context: document.body,
+        success: function (data) {
+            preestablecidos = data;
+            cargarmenupreestablecidos(data.length);
+        }
+    });    
+    
+    $.ajax({
+        url: "/partes/jsonVacio",
+        context: document.body,
+        success: function (data) {
+            modelo = data;
+        }
     });
-    ajax.doGet();
     
-    ajax = new AJAXInteraction("data/relojvacio.json", function(data) {
-        
-        modelo = data;
+    $.ajax({
+        url: "/partes/jsonVacio",
+        context: document.body,
+        success: function (data) {
+            modelovacio = data;
+            limpiarReloj();
+        }
     });
-    ajax.doGet();
     
-    ajax = new AJAXInteraction("data/relojvacio.json", function(data) {
-        
-        modelovacio = data;
-        limpiarReloj();
-    });
-    ajax.doGet();
-    
-    
- 
     $('.parallax').parallax();
     $('.collapsible').collapsible();
     
@@ -97,7 +105,7 @@ function actualizarReloj(parte, elegido) {
     
     modelo[parte] = elegido;
     
-    $("#"+parte).attr('src', "img/"+elegido.imagen);
+    $("#"+parte).attr('src', elegido.imagen);
 }
 
 function cargarmenupreestablecidos(cant) {

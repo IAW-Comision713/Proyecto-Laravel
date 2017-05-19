@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Preestablecido;
+use Carbon\Carbon;
 
 class PreestablecidosSeeder extends Seeder
 {
@@ -15,41 +17,51 @@ class PreestablecidosSeeder extends Seeder
         DB::table('preestablecidos')->delete();
         
         Preestablecido::create(['id' => '1',
-                                'nombre' => 'Jane',
+                                'nombre' => 'Vacio',
                                 'malla' => '1',
-                                'fondo' => '9',
-                                'marco' => '5',
-                                'agujas' => '5',
+                                'fondo' => '1',
+                                'marco' => '1',
+                                'agujas' => '1',
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()         
         ]);
         
         Preestablecido::create(['id' => '2',
-                                'nombre' => 'Rose',
-                                'malla' => '5',
-                                'fondo' => '8',
-                                'marco' => '4',
-                                'agujas' => '2',
+                                'nombre' => 'Jane',
+                                'malla' => '2',
+                                'fondo' => '10',
+                                'marco' => '6',
+                                'agujas' => '6',
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()         
         ]);
         
         Preestablecido::create(['id' => '3',
-                                'nombre' => 'Anne',
-                                'malla' => '7',
-                                'fondo' => '4',
-                                'marco' => '2',
-                                'agujas' => '4',
+                                'nombre' => 'Rose',
+                                'malla' => '6',
+                                'fondo' => '9',
+                                'marco' => '5',
+                                'agujas' => '3',
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()         
         ]);
         
         Preestablecido::create(['id' => '4',
-                                'nombre' => 'Agnes',
-                                'malla' => '6',
-                                'fondo' => '7',
+                                'nombre' => 'Anne',
+                                'malla' => '8',
+                                'fondo' => '5',
                                 'marco' => '3',
-                                'agujas' => '3',
+                                'agujas' => '5',
+                                'created_at' => Carbon::now(),
+                                'updated_at' => Carbon::now()         
+        ]);
+        
+        Preestablecido::create(['id' => '5',
+                                'nombre' => 'Agnes',
+                                'malla' => '7',
+                                'fondo' => '8',
+                                'marco' => '4',
+                                'agujas' => '4',
                                 'created_at' => Carbon::now(),
                                 'updated_at' => Carbon::now()         
         ]);

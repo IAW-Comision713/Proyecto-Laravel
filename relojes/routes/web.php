@@ -27,6 +27,10 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
+Route::get('/partes/jsonPartes', 'PartesController@jsonPartes');
+Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');
+Route::get('/partes/jsonPreestablecidos', 'PartesController@jsonPreestablecidos');
+
 // OAuth Routes
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

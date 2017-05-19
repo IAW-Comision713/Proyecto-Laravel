@@ -16,7 +16,7 @@ class CreatePreestablecidosTable extends Migration
         Schema::create('preestablecidos', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             
             $table->integer('malla')->unsigned();
             $table->foreign('malla')->references('id')->on('mallas');

@@ -1,6 +1,7 @@
 var personalizables;
 var modelo;
 var preestablecidos;
+var preusuario;
 var modelovacio;
 
 $(function() {
@@ -87,7 +88,7 @@ function cargaropciones(nombre, opciones, li) {
         
         var nom = opciones[index];
 
-        var item = $("<li></li>");
+        var item = $("<li></li>").attr("class", "opcionparte").attr("tabindex", index);
         var opcion = $("<div></div>").text(opciones[index].nombre);
         item.append(opcion);
         lista.append(item);
@@ -127,6 +128,40 @@ function cargarmenupreestablecidos(cant) {
     }
     
     $("#botonera-preestablecidos").append(lista);
+}
+
+function preestablecidosusuario() {
+
+    $.ajax({
+        url: "/partes/jsonUsuarioPreestablecidos",
+        context: document.body,
+        success: function (data) {
+            preusuario = data;
+
+            var lista = $("<ul></ul>");
+    
+            for(var p in preusuario) {
+        
+                var item = $("<li></li>");
+                var opcion = $("<a></a>").text(p);
+                opcion.attr("class", "waves-effect btn");
+                item.append(opcion);
+                lista.append(item);
+        
+                opcion.on("click", {"id": preusuario[p]}, function(e) {
+            
+                    cargarmodelo(e.data.id);
+                });
+            }
+    
+            $("#usuario-preestablecidos").append(lista);
+        }
+    });
+}
+
+function actualizarpusuario() {
+
+
 }
 
 function limpiarReloj(){

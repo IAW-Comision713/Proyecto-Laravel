@@ -14,6 +14,7 @@ class CreatePreestablecidosTable extends Migration
     public function up()
     {
         Schema::create('preestablecidos', function (Blueprint $table) {
+            
             $table->increments('id');
             
             $table->string('nombre')->unique();
@@ -29,6 +30,9 @@ class CreatePreestablecidosTable extends Migration
             
             $table->integer('agujas')->unsigned();
             $table->foreign('agujas')->references('id')->on('agujas');
+
+            $table->integer('usuario')->unsigned();
+            $table->foreign('usuario')->references('id')->on('users');
             
             $table->timestamps();
         });

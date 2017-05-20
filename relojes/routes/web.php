@@ -30,6 +30,7 @@ Route::get('/readme', function () {
 Route::get('/partes/jsonPartes', 'PartesController@jsonPartes');
 Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');
 Route::get('/partes/jsonPreestablecidos', 'PartesController@jsonPreestablecidos');
+Route::get('/partes/jsonUsuarioPreestablecidos', 'PartesController@jsonUsuarioPreestablecidos');
 
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

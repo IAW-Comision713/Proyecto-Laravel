@@ -10,6 +10,8 @@ use App\Marco;
 use App\Aguja;
 use App\Preestablecido;
 
+use Illuminate\Support\Facades\Auth;
+
 class PartesController extends Controller
 {
     //
@@ -51,7 +53,32 @@ class PartesController extends Controller
         
         $listado = array();
         
-        foreach(Preestablecido::getPreestablecidos()->get() as $p) {
+        foreach(Preestablecido::getPreestablecidos()->where('usuario', 1)->get() as $p) {
+            
+            $nombre = $p->nombre;
+            
+            $malla = Malla::find($p->malla);
+            $fondo = Fondo::find($p->fondo);
+            $marco = Marco::find($p->marco);
+            $agujas = Aguja::find($p->agujas);
+            
+            $pre = new Preestablecido;
+            $pre->Malla = $malla;
+            $pre->Fondo = $fondo;
+            $pre->Marco = $marco;
+            $pre->Agujas = $agujas;
+            
+            $listado[$nombre] = $pre;
+        }
+        
+        return $listado;
+    }
+
+    public function jsonUsuarioPreestablecidos() {
+
+        $listado = array();
+        
+        foreach(Preestablecido::getPreestablecidos()->where('usuario', Auth::id())->get() as $p) {
             
             $nombre = $p->nombre;
             

@@ -57,3 +57,14 @@ footer.page-footer {
     
     height: 50px;
 }
+
+.opcionparte:hover {
+
+  cursor: pointer; cursor: hand;
+}
+
+.opcionparte:focus {
+
+  background-color: gray;
+  outline: none;
+}

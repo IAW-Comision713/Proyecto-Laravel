@@ -23,7 +23,8 @@ class PreestablecidosSeeder extends Seeder
                                 'marco' => '1',
                                 'agujas' => '1',
                                 'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()         
+                                'updated_at' => Carbon::now(),
+                                'usuario' => '1'        
         ]);
         
         Preestablecido::create(['id' => '2',
@@ -33,7 +34,8 @@ class PreestablecidosSeeder extends Seeder
                                 'marco' => '6',
                                 'agujas' => '6',
                                 'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()         
+                                'updated_at' => Carbon::now(),
+                                'usuario' => '1'         
         ]);
         
         Preestablecido::create(['id' => '3',
@@ -43,7 +45,8 @@ class PreestablecidosSeeder extends Seeder
                                 'marco' => '5',
                                 'agujas' => '3',
                                 'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()         
+                                'updated_at' => Carbon::now(),
+                                'usuario' => '1'         
         ]);
         
         Preestablecido::create(['id' => '4',
@@ -53,7 +56,8 @@ class PreestablecidosSeeder extends Seeder
                                 'marco' => '3',
                                 'agujas' => '5',
                                 'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()         
+                                'updated_at' => Carbon::now(),
+                                'usuario' => '1'         
         ]);
         
         Preestablecido::create(['id' => '5',
@@ -63,7 +67,8 @@ class PreestablecidosSeeder extends Seeder
                                 'marco' => '4',
                                 'agujas' => '4',
                                 'created_at' => Carbon::now(),
-                                'updated_at' => Carbon::now()         
+                                'updated_at' => Carbon::now(),
+                                'usuario' => '1'         
         ]);
     }
 }

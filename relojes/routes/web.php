@@ -40,14 +40,3 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 //Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

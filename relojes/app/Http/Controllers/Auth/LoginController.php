@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Contracts\Auth\Guard;
 
-use Socialite;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
-class LoginController extends Controller
-{
+//use Socialite;
+
+//use Illuminate\Routing\Controller;
+
+
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -19,9 +25,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
@@ -30,13 +34,25 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * @var Socialite
+     */    
+    private $socialite;
+
+    /**
+     * @var Guard
+     */
+    private $auth;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Socialite $socialite)
     {
+        $this->socialite=$socialite;
         $this->middleware('guest')->except('logout');
+
     }
 
      /**
@@ -44,9 +60,22 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider($provider)
+    public function redirectToProvider($provider, Guard $auth,Request $request)
     {
-        return Socialite::driver($provider)->redirect();
+        $this->auth=$auth;
+        $hasCode = $request->has('code');
+
+        //return $authenticateUser->execute($hasCode, $this, $provider);
+        if ( ! $hasCode) return $this->getAuthorizationFirst($provider);
+        
+        //$user = $this->users->findByUsernameOrCreate($this->getProviderUser($provider), $provider);
+        
+        //$this->auth->login($user, true);
+        //$this->auth->redirectToProvider($provider, $user, true);
+        
+        //return $listener->userHasLoggedIn($user);
+        
+        //return Socialite::driver($provider)->redirect();
     }
     /**
      * Obtain the user information from provider.  Check if the user already exists in our
@@ -58,10 +87,11 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
+        //$user = Socialite::with($provider)->user();
+        $user = $this->getProviderUser($provider);
 
         $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
+        $this->auth->login($authUser, true);
         return redirect($this->redirectTo);
     }
 
@@ -78,6 +108,8 @@ class LoginController extends Controller
         if ($authUser) {
             return $authUser;
         }
+
+        dd($user);
         return User::create([
             'name'     => $user->name,
             'email'    => $user->email,
@@ -85,6 +117,23 @@ class LoginController extends Controller
             'provider_id' => $user->id
         ]);
     }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    private function getAuthorizationFirst($provider)
+    {
+        return $this->socialite->driver($provider)->redirect();
+    }
+
+     /**
+     * @return \Laravel\Socialite\Contracts\User
+     */
+    private function getProviderUser($provider)
+    {
+        return $this->socialite->with($provider)->user();
+    }
+
 }
 
 

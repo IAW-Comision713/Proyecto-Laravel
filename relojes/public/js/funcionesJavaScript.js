@@ -50,6 +50,9 @@ $(function() {
     
     $('.parallax').parallax();
     $('.collapsible').collapsible();
+    $(document).ready(function() {
+        $('select').material_select();
+    });
     
     if(localStorage.getItem("estilo") !== null){ 
         

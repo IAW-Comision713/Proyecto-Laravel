@@ -8,6 +8,15 @@ use App\Preestablecido;
 class Malla extends Model
 {
     //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre', 'imagen',
+    ];
+    
     public function scopeGetMallas($query) {
         
         $idvacio = Preestablecido::where('nombre', 'Vacio')->pluck('malla')->first();

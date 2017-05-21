@@ -160,14 +160,10 @@ function preestablecidosusuario() {
                 });
             }
     
-            $("#usuario-preestablecidos").append(lista);
+            $("#div-usuario-preestablecidos").empty();
+            $("#div-usuario-preestablecidos").append(lista);
         }
     });
-}
-
-function actualizarpusuario() {
-
-
 }
 
 function limpiarReloj(){

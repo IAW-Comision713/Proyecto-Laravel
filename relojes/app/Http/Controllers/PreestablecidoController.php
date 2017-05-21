@@ -12,6 +12,12 @@ class PreestablecidoController extends Controller
 {
     public function guardarPreestablecido(Request $request) {
 
+    	/*$this.validate(request(), [
+
+    		'name' => 'required',
+    		'pre' => 'required'
+    	]);*/
+
     	$nuevopre = new Preestablecido;
 
     	$modelo = request('pre');

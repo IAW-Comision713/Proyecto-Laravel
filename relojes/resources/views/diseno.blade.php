@@ -55,10 +55,10 @@
 
                     <div id="guardar-form" class="z-depth-3 scale-transition scale-out">
 
-                        
+
 
                         <div class="input-field">
-                            <input id="nombremodelo" type="text" class="validate" minlength="1" maxlength="50">
+                            <input id="nombremodelo" type="text" class="validate" minlength="1" maxlength="50" requierd>
                             <label for="nombremodelo" data-error="El nombre del modelo no es válido!">Nombre de tu modelo</label>
                         </div>
                         <br>
@@ -89,11 +89,11 @@
                 <div id="usuario-preestablecidos">
                     
                     <h5>Mis modelos</h5>
-
-                    <script>
-                        preestablecidosusuario();
-                    </script>
-
+                    <div id="div-usuario-preestablecidos">
+                        <script>
+                            preestablecidosusuario();
+                        </script>
+                    </div>
                 </div>
 
                 @endif

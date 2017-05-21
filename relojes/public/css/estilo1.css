@@ -75,4 +75,5 @@ footer.page-footer {
   width: 200px;
   background-color: #b2dfdb;
   padding: 10 10 10 10;
+  position: relative;
 }

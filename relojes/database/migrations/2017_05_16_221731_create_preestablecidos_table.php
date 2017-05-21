@@ -17,7 +17,7 @@ class CreatePreestablecidosTable extends Migration
             
             $table->increments('id');
             
-            $table->string('nombre')->unique();
+            $table->string('nombre')->required();
             
             $table->integer('malla')->unsigned();
             $table->foreign('malla')->references('id')->on('mallas');

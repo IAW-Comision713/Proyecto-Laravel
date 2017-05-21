@@ -32,6 +32,8 @@ Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');
 Route::get('/partes/jsonPreestablecidos', 'PartesController@jsonPreestablecidos');
 Route::get('/partes/jsonUsuarioPreestablecidos', 'PartesController@jsonUsuarioPreestablecidos');
 
+Route::post('/preestablecido/guardarPreestablecido', 'PreestablecidoController@guardarPreestablecido');
+
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');

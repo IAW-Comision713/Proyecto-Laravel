@@ -94,4 +94,23 @@ body{
     height: 50px;
 }
 
+.opcionparte:hover {
+
+  cursor: pointer; cursor: hand;
+}
+
+.opcionparte:focus {
+
+  background-color: gray;
+  outline: none;
+}
+
+#guardar-form {
+
+  z-index: 2;
+  width: 200px;
+  background-color: #b2dfdb;
+  padding: 10 10 10 10;
+}
+
 

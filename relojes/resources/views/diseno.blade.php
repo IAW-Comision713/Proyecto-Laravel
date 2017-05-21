@@ -49,8 +49,30 @@
                 <button id="btnDescargar" class="  btn-floating tooltipped " data-position="top" data-delay="50" data-tooltip="Descargar" onclick="descargarimagen()"><i class="material-icons large">system_update_alt</i></button>
 
                 <p>
+                
+                <div id="guardar-box">
+                    <button id="btnGuardar" class="  btn-floating tooltipped " data-position="top" data-delay="50" data-tooltip="Guardar en Mis Modelos" onclick="mostrarguardar()"><i class="material-icons large">save</i></button>
 
-                <button id="btnGuardar" class="  btn-floating tooltipped " data-position="top" data-delay="50" data-tooltip="Guardar en Mis Modelos" onclick="actualizarpusuario()"><i class="material-icons large">save</i></button>  
+                    <div id="guardar-form" class="z-depth-3 scale-transition scale-out">
+
+                        
+
+                        <div class="input-field">
+                            <input id="nombremodelo" type="text" class="validate" minlength="1" maxlength="50">
+                            <label for="nombremodelo" data-error="El nombre del modelo no es válido!">Nombre de tu modelo</label>
+                        </div>
+                        <br>
+                        <button class="btn waves-effect waves-light" type="submit" name="action" onclick="guardarModelo()">
+                            Guardar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div> 
+                </div>
+
+                
+
+
+                 
             </div>
 
             <div id="preestablecidos" class="col s4">

@@ -6,6 +6,12 @@ var modelovacio;
 
 $(function() {
     
+     $.ajaxSetup({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
+
      $.ajax({
         url: "/partes/jsonPartes",
         context: document.body,
@@ -214,9 +220,6 @@ function descargarimagen() {
         html2canvas($("#reloj"), {
             onrendered: function(canvas) {
                 theCanvas = canvas;
-                
-                //borrar esta linea de abajo si no se usa
-                //document.body.appendChild(canvas);
 
                 canvas.toBlob(function(blob) {
 					saveAs(blob, "Mireloj.png"); 
@@ -232,3 +235,36 @@ function descargarimagen() {
         
         $('.dropdown-button').dropdown('close');
  }
+
+function mostrarguardar() { 
+    
+    $("#guardar-form").toggleClass("scale-out scale-in");
+}
+
+function guardarModelo() {
+
+    var nommod = $("#nombremodelo").val();
+
+    if (nommod == "")
+        Materialize.toast('Tu modelo no tiene nombre!!', 4000);
+    else if (nommod == "Vacio")
+        Materialize.toast('Ese nombre no está permitido!!', 4000);
+    else {
+
+        mostrarguardar();
+
+        $.ajax({
+        
+            method: "post",
+            url: "/preestablecido/guardarPreestablecido",
+            data: {name: nommod, pre: modelo},
+            success: function (data) {
+            
+                Materialize.toast('Modelo guardado!', 4000);
+                preestablecidosusuario();
+            }
+        });
+    }
+
+    
+}

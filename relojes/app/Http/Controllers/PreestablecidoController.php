@@ -15,7 +15,10 @@ class PreestablecidoController extends Controller
     	/*$this.validate(request(), [
 
     		'name' => 'required',
-    		'pre' => 'required'
+    		'pre.Malla.id' => 'required',
+    		'pre.Fondo.id' => 'required',
+    		'pre.Marco.id' => 'required',
+    		'pre.Agujas.id' => 'required',
     	]);*/
 
     	$nuevopre = new Preestablecido;
@@ -30,5 +33,15 @@ class PreestablecidoController extends Controller
     	$nuevopre->usuario = Auth::id();
 
 		$nuevopre->save();
+    }
+
+    public function eliminarPreestablecido(Request $request) {
+
+        $elimpre = Preestablecido::getPreestablecidos()->where([
+                                                        ['usuario', '=', Auth::id()],
+                                                        ['nombre', '=', request('name')]
+                                                        ]);
+
+        $elimpre->delete();
     }
 }

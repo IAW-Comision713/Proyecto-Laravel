@@ -53,6 +53,16 @@ footer.page-footer {
     background-color: #01579b;
 }
 
+.ancho {
+
+  width: 75%;
+}
+
+.angosto {
+
+  width: : 25%;
+}
+
 #img-logo {
     
     height: 50px;

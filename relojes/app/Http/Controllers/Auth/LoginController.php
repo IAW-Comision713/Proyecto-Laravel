@@ -8,7 +8,6 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Socialite;
 
-
 class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +118,6 @@ class LoginController extends Controller {
     {
         return Socialite::with($provider)->user();
     }
-
 }
 
 

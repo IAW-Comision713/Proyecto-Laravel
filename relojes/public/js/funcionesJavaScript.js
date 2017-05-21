@@ -200,9 +200,9 @@ function preestablecidosusuario() {
 
         lista.append(item);
 
-        opcion.on("click", {"id": preusuario[p]}, function(e) {
+        opcion.on("click", {"id": p}, function(e) {
     
-            cargarmodelo(e.data.id);
+            cargarmodelousuario(e.data.id);
         });
 
         eliminar.on("click", {"id": p}, function(e) {
@@ -231,6 +231,11 @@ function cargarmodelo(mod) {
 function cargarpreestablecido(id) {
         
     cargarmodelo(preestablecidos[id]);
+}
+
+function cargarmodelousuario(id) {
+
+    cargarmodelo(preusuario[id]);
 }
 
 function addFavoritos(){
@@ -294,7 +299,8 @@ function guardarModelo() {
         Materialize.toast('Tu modelo no tiene nombre!!', 4000);
     else {
 
-        preusuario[nommod] = modelo;
+        preusuario[nommod] = {};
+        Object.assign(preusuario[nommod], modelo);
 
         mostrarguardar();
 

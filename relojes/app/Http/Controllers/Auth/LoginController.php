@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Socialite;
+use Auth;
+use App\User;
 
 class LoginController extends Controller {
     /*
@@ -68,7 +70,7 @@ class LoginController extends Controller {
     public function handleProviderCallback($provider)
     {
         try {
-            $user = Socialite::driver($provider)->user();
+            $user = Socialite::driver($provider)->stateless()->user();
         } catch (Exception $e) {
             return Redirect::to('/home');
         }
@@ -95,9 +97,14 @@ class LoginController extends Controller {
             return $authUser;
         }
 
+        //Caso github
+        if($user->name == null)
+            $user->name = $user->nickname;
+
         return User::create([
             'name'     => $user->name,
             'email'    => $user->email,
+            'password' => null,
             'provider' => $provider,
             'provider_id' => $user->id
         ]);

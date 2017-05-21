@@ -3,6 +3,7 @@ var modelo;
 var preestablecidos;
 var preusuario;
 var modelovacio;
+var nommod;
 
 $(function() {
     
@@ -57,7 +58,25 @@ $(function() {
         
         cambiarestilo(localStorage.getItem("estilo"));
     }
+
+    isLoggedIn(cargarpreestablecidosusuario);
 });
+
+function isLoggedIn(callback, attr) {
+
+    var logged = false;
+
+    $.ajax({
+            url: "/user/loggedin",
+            context: document.body,
+            success: function (data) {
+
+                logged = (data === "true");
+
+                callback(logged, attr);
+            }
+    });
+}
 
 function cargarpartes(data) {
       
@@ -126,7 +145,7 @@ function cargarmenupreestablecidos(cant) {
         
         var item = $("<li></li>");
         var opcion = $("<a></a>").text(p);
-        opcion.attr("class", "waves-effect btn");
+        opcion.attr("class", "waves-effect btn ancho");
         item.append(opcion);
         lista.append(item);
         
@@ -139,34 +158,64 @@ function cargarmenupreestablecidos(cant) {
     $("#botonera-preestablecidos").append(lista);
 }
 
+function cargarpreestablecidosusuario(logged) {
+
+    if(logged) {
+
+        $.ajax({
+            url: "/partes/jsonUsuarioPreestablecidos",
+            context: document.body,
+            success: function (data) {
+                
+                preusuario = data;
+                preestablecidosusuario();
+            }
+        });
+    }
+    else if(localStorage.getItem("mismodelos") !== null) {
+
+        preusuario = JSON.parse(localStorage.getItem("mismodelos"));
+        preestablecidosusuario();
+    }
+    else {
+
+        preusuario = {};
+    }
+}
+
 function preestablecidosusuario() {
 
-    $.ajax({
-        url: "/partes/jsonUsuarioPreestablecidos",
-        context: document.body,
-        success: function (data) {
-            preusuario = data;
+    var lista = $("<ul></ul>");
+    
+    for(var p in preusuario) {
+    
+        var item = $("<li></li>");
+        
+        var opcion = $("<a></a>").text(p);
+        opcion.attr("class", "waves-effect btn ancho");
+        item.append(opcion);
 
-            var lista = $("<ul></ul>");
+        var eliminar = $("<a></a>");
+        var icono = $("<i></i>").attr("class", "material-icons").text("clear");
+        eliminar.attr("class", "waves-effect btn angosto");
+        eliminar.append(icono);
+        item.append(eliminar);
+
+        lista.append(item);
+
+        opcion.on("click", {"id": preusuario[p]}, function(e) {
     
-            for(var p in preusuario) {
-        
-                var item = $("<li></li>");
-                var opcion = $("<a></a>").text(p);
-                opcion.attr("class", "waves-effect btn");
-                item.append(opcion);
-                lista.append(item);
-        
-                opcion.on("click", {"id": preusuario[p]}, function(e) {
-            
-                    cargarmodelo(e.data.id);
-                });
-            }
+            cargarmodelo(e.data.id);
+        });
+
+        eliminar.on("click", {"id": p}, function(e) {
     
-            $("#div-usuario-preestablecidos").empty();
-            $("#div-usuario-preestablecidos").append(lista);
-        }
-    });
+            borrarModelo(e.data.id);
+        });
+    }
+    
+    $("#div-usuario-preestablecidos").empty();
+    $("#div-usuario-preestablecidos").append(lista);
 }
 
 function limpiarReloj(){
@@ -242,15 +291,23 @@ function mostrarguardar() {
 
 function guardarModelo() {
 
-    var nommod = $("#nombremodelo").val();
+    nommod = $("#nombremodelo").val();
 
     if (nommod == "")
         Materialize.toast('Tu modelo no tiene nombre!!', 4000);
-    else if (nommod == "Vacio")
-        Materialize.toast('Ese nombre no está permitido!!', 4000);
     else {
 
+        preusuario[nommod] = modelo;
+
         mostrarguardar();
+
+        isLoggedIn(almacenarModelo);
+    }
+}
+
+function almacenarModelo(logged) {
+
+    if(logged) {
 
         $.ajax({
         
@@ -264,6 +321,41 @@ function guardarModelo() {
             }
         });
     }
+    else {
 
+        localStorage.setItem("mismodelos", JSON.stringify(preusuario));
+        Materialize.toast('Modelo guardado localmente!', 4000);
+        preestablecidosusuario();
+    }
+}
+
+function borrarModelo(mod) {
     
+    delete preusuario[mod];
+
+    isLoggedIn(eliminarModelo, mod);
+}
+
+function eliminarModelo(logged, mod) {
+
+    if(logged) {
+
+        $.ajax({
+        
+            method: "post",
+            url: "/preestablecido/eliminarPreestablecido",
+            data: {name: mod},
+            success: function (data) {
+            
+                Materialize.toast('Modelo eliminado!', 4000);
+                preestablecidosusuario();
+            }
+        });
+    }
+    else {
+
+        localStorage.setItem("mismodelos", JSON.stringify(preusuario));
+        Materialize.toast('Modelo eliminado localmente!', 4000);
+        preestablecidosusuario();
+    }
 }

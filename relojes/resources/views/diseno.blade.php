@@ -83,20 +83,14 @@
 
                 </div>
 
-
-                @if(!Auth::guest())
-
                 <div id="usuario-preestablecidos">
                     
                     <h5>Mis modelos</h5>
                     <div id="div-usuario-preestablecidos">
-                        <script>
-                            preestablecidosusuario();
-                        </script>
                     </div>
                 </div>
 
-                @endif
+               
 
             </div>
 

@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,6 +35,9 @@ Route::get('/partes/jsonPreestablecidos', 'PartesController@jsonPreestablecidos'
 Route::get('/partes/jsonUsuarioPreestablecidos', 'PartesController@jsonUsuarioPreestablecidos');
 
 Route::post('/preestablecido/guardarPreestablecido', 'PreestablecidoController@guardarPreestablecido');
+Route::post('/preestablecido/eliminarPreestablecido', 'PreestablecidoController@eliminarPreestablecido');
+
+Route::get('/user/loggedin', 'UsuarioController@isLoggedin');
 
 // OAuth Routes
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FondosSeeder::class);
         $this->call(MallasSeeder::class);
         $this->call(MarcosSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(PreestablecidosSeeder::class);
     }
 }

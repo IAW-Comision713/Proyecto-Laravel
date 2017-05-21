@@ -7,6 +7,15 @@ use App\Preestablecido;
 
 class Aguja extends Model
 {
+	/**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre', 'imagen',
+    ];
+
 
     //Acá van los métodos de obtener todos menos el vacío. Ver Laracast 7
     public function scopeGetAgujas($query) {

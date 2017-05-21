@@ -8,6 +8,15 @@ use App\Preestablecido;
 class Fondo extends Model
 {
     //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre', 'imagen',
+    ];
+    
     public function scopeGetFondos($query) {
         
         $idvacio = Preestablecido::where('nombre', 'Vacio')->pluck('fondo')->first();

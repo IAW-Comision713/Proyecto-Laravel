@@ -6,19 +6,6 @@
 
 @endsection
 
-@section('css')
-
-	<!--<link href="{{ URL::asset('css/estilospartes.css') }}" rel="stylesheet" type="text/css" >-->
-    
-@endsection
-
-@section('scripts')
-
-    <!--<script language="javascript" src="{{ asset('js/html2canvas.js') }}"></script>    
-    <script language="javascript" src="{{ asset('js/FileSaver.js') }}"></script>    -->
-
-@endsection
-
 @section('content')
 	<h1>Agregar Parte</h1>
 	<div class="row">

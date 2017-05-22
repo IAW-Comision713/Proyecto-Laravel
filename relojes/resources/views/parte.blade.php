@@ -9,8 +9,7 @@
 @section('scripts')
 	
 	<script type="text/javascript" src="{{ asset('js/actualizarPartes.js') }}"></script>
-	<script language="javascript" src="js/html2canvas.js"></script>
-    <script language="javascript" src="js/FileSaver.js"></script>
+	<script type="text/javascript" src="{{ asset('js/FileSaver.js') }}"></script>
 
 @endsection
 

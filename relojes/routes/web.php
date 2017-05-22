@@ -26,7 +26,10 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
-Route::get('/parte/create', 'AddController@create');
+Route::get('/parte/create', function () {
+    return view('parte');
+});
+
 Route::post('/parte', 'AddController@store');
 
 Route::get('/partes/jsonPartes', 'PartesController@jsonPartes');

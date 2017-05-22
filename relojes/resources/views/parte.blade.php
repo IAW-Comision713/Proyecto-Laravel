@@ -6,6 +6,12 @@
 
 @endsection
 
+@section('scripts')
+	
+	<script type="text/javascript" src="{{ asset('js/actualizarPartes.js') }}"></script>
+
+@endsection
+
 @section('content')
 	<h1>Agregar Parte</h1>
 	<div class="row">
@@ -53,5 +59,11 @@
 	    		@endforeach
 	    	</ul>
 	    </div>
+  	</div>
+  	<h1>Eliminar Parte</h1>
+  	<div id="panelEliminar">
+
+
+  		
   	</div>
 @endsection

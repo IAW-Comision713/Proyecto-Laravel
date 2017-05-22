@@ -50,9 +50,7 @@ $(function() {
     
     $('.parallax').parallax();
     $('.collapsible').collapsible();
-    $(document).ready(function() {
-        $('select').material_select();
-    });
+    
     
     if(localStorage.getItem("estilo") !== null){ 
         
@@ -364,4 +362,7 @@ function eliminarModelo(logged, mod) {
         Materialize.toast('Modelo eliminado localmente!', 4000);
         preestablecidosusuario();
     }
+
 }
+
+

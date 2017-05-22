@@ -35,16 +35,8 @@ $(function() {
         url: "/partes/jsonVacio",
         context: document.body,
         success: function (data) {
-            modelo = data;
-        }
-    });
-    
-    $.ajax({
-        url: "/partes/jsonVacio",
-        context: document.body,
-        success: function (data) {
+            
             modelovacio = data;
-            limpiarReloj();
         }
     });
     
@@ -58,6 +50,16 @@ $(function() {
     }
 
     isLoggedIn(cargarpreestablecidosusuario);
+
+    $.ajax({
+        url: "/diseno/getModeloURL",
+        context: document.body,
+        success: function (data) {
+            
+            modelo = data;
+            cargarmodelo(data);
+        }
+    });
 });
 
 function isLoggedIn(callback, attr) {

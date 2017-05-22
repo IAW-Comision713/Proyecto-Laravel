@@ -22,7 +22,9 @@ Route::get('/diseno', function () {
     return view('diseno');
 })->name('diseno');
 
-Route::get('/diseno/compartir', 'DisenoController@getModeloURL')->name('diseno');
+Route::get('/diseno/getModeloURL', 'DisenoController@getModeloURL');
+
+Route::get('/diseno/malla/{malla}/fondo/{fondo}/marco/{marco}/agujas/{agujas}', 'DisenoController@createModeloURL');
 
 Route::get('/readme', function () {
     return view('readme');

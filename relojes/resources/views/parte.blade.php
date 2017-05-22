@@ -14,7 +14,6 @@
 
 @endsection
 
-@endsection
 
 @section('content')
 	<h1>Agregar Parte</h1>

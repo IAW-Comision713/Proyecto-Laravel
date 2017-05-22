@@ -37,9 +37,11 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                            @if (Auth::user()->name()=='Admin')
-                                <li><a href="/parte/create">Editar Partes</a></li>                                
+                                                           
                         @else
+                            @if (Auth::id()==1)
+                                <li><a href="{{ route('editar') }}">Editar Partes</a></li> 
+                            @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-button" data-activates="dropdown">
                                     {{ Auth::user()->name }} <span class="caret"></span>

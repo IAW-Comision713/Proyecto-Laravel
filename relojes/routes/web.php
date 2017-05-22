@@ -30,7 +30,7 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
-Route::get('/parte/create', 'AddController@create');
+Route::get('/parte/create', 'AddController@create')->name('editar');
 
 Route::post('/parte', 'AddController@store');
 Route::post('/deleteparte', 'AddController@destroy');

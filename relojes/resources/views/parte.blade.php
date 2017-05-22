@@ -14,6 +14,7 @@
 
 @endsection
 
+
 @section('content')
 	<h1>Agregar Parte</h1>
 	<div class="row">

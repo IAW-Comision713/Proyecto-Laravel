@@ -70,7 +70,7 @@ class LoginController extends Controller {
     public function handleProviderCallback($provider)
     {
         try {
-            $user = Socialite::driver($provider)->user();
+            $user = Socialite::driver($provider)->stateless()->user();
         } catch (Exception $e) {
             return Redirect::to('/home');
         }
@@ -96,8 +96,6 @@ class LoginController extends Controller {
         if ($authUser) {
             return $authUser;
         }
-
-        dd($user);
 
         //Caso github
         if($user->name == null)

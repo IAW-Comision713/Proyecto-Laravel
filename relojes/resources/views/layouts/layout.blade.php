@@ -33,12 +33,14 @@
                 <a href="/" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/readme">Readme</a></li>
+                    @if (Auth::id() == 1)
+                                <li><a href="/parte/create">Editar Partes</a></li>
+                            @endif  
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                            @if (Auth::user()->name()=='Admin')
-                                <li><a href="/parte/create">Editar Partes</a></li>                                
+                                                          
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-button" data-activates="dropdown">

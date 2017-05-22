@@ -46,5 +46,4 @@ return [
         'client_secret' => env('GITHUB_SECRET'),
         'redirect'      => env('GITHUB_URL'),
     ],
-
 ];

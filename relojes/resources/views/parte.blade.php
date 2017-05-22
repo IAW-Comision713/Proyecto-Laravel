@@ -6,16 +6,9 @@
 
 @endsection
 
-@section('css')
-
-	<!--<link href="{{ URL::asset('css/estilospartes.css') }}" rel="stylesheet" type="text/css" >-->
-    
-@endsection
-
 @section('scripts')
-
-    <!--<script language="javascript" src="{{ asset('js/html2canvas.js') }}"></script>    
-    <script language="javascript" src="{{ asset('js/FileSaver.js') }}"></script>    -->
+	
+	<script type="text/javascript" src="{{ asset('js/actualizarPartes.js') }}"></script>
 
 @endsection
 
@@ -66,5 +59,11 @@
 	    		@endforeach
 	    	</ul>
 	    </div>
+  	</div>
+  	<h1>Eliminar Parte</h1>
+  	<div id="panelEliminar">
+
+
+  		
   	</div>
 @endsection

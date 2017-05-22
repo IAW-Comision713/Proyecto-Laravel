@@ -12,17 +12,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        
-        <link type="text/css" rel="stylesheet" href="css/materialize.css">
-        <link id="estilo" type="text/css" rel="stylesheet" href="css/estilo1.css" media="screen">
+
+        <link href="{{ asset('css/materialize.css') }}" rel="stylesheet"> 
+        <link href="{{ asset('css/estilo1.css') }}" rel="stylesheet"> 
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         @yield('css')
 
-        
-        <script language="javascript" src="js/jquery-3.2.1.js"></script>
-        <script language="javascript" src="js/materialize.js"></script>
-        <script language="javascript" src="js/funcionesJavaScript.js"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/materialize.js') }}"></script>        
+
 
         @yield('scripts')
         
@@ -30,7 +30,7 @@
     <body>
         <nav class="transparent">
             <div class="nav-wrapper container">
-                <a href="{{ route('home') }}" class="brand-logo"><img id="img-logo" src="img/logo.png" alt="logo">Clock</a>
+                <a href="{{ route('home') }}" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/readme">Readme</a></li>
                     <!-- Authentication Links -->

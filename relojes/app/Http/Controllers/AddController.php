@@ -28,7 +28,7 @@ class AddController extends Controller
     public function create()
     {
         // /add/create
-        return view('add');
+        return view('parte');
     }
 
     /**

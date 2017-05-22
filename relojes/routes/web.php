@@ -22,6 +22,8 @@ Route::get('/diseno', function () {
     return view('diseno');
 })->name('diseno');
 
+Route::get('/diseno/compartir', 'DisenoController@getModeloURL')->name('diseno');
+
 Route::get('/readme', function () {
     return view('readme');
 });

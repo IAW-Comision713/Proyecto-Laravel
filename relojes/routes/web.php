@@ -26,11 +26,10 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
-Route::get('/parte/create', function () {
-    return view('parte');
-});
+Route::get('/parte/create', 'AddController@create');
 
 Route::post('/parte', 'AddController@store');
+Route::post('/deleteparte', 'AddController@destroy');
 
 Route::get('/partes/jsonPartes', 'PartesController@jsonPartes');
 Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');
@@ -46,7 +45,5 @@ Route::get('/user/loggedin', 'UsuarioController@isLoggedin');
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-//Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-//Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 

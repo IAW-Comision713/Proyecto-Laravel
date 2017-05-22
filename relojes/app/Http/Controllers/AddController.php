@@ -143,8 +143,27 @@ class AddController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //DELETE /add/id
+        //
+        $aguja=$request->Aguja;
+        $marco=$request->Marco;
+        $malla=$request->Malla;
+        $fondo=$request->Fondo;
+
+        if(Aguja::where('nombre', $aguja))
+            Aguja::where('nombre', $aguja)->delete(); 
+        
+        if(Marco::where('nombre', $marco))
+            Marco::where('nombre', $marco)->delete();
+        
+        if(Malla::where('nombre', $malla))
+           Malla::where('nombre', $malla)->delete();
+        
+        if(Fondo::where('nombre', $fondo))
+            Fondo::where('nombre', $fondo)->delete();
+
+        return redirect('/parte/create');
+
     }
 }

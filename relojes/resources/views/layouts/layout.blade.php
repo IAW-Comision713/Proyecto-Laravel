@@ -14,7 +14,7 @@
         <link rel="shortcut icon" href="img/favicon.ico">
 
         <link href="{{ asset('css/materialize.css') }}" rel="stylesheet"> 
-        <link href="{{ asset('css/estilo1.css') }}" rel="stylesheet"> 
+        <link id="estilo" href="{{ asset('css/estilo1.css') }}" rel="stylesheet"> 
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -30,13 +30,15 @@
     <body>
         <nav class="transparent">
             <div class="nav-wrapper container">
-                <a href="{{ route('home') }}" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
+                <a href="/" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/readme">Readme</a></li>
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
+                            @if (Auth::user()->name()=='Admin')
+                                <li><a href="/parte/create">Editar Partes</a></li>                                
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-button" data-activates="dropdown">

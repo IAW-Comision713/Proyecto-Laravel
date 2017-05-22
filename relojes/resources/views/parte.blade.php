@@ -9,6 +9,10 @@
 @section('scripts')
 	
 	<script type="text/javascript" src="{{ asset('js/actualizarPartes.js') }}"></script>
+	<script language="javascript" src="js/html2canvas.js"></script>
+    <script language="javascript" src="js/FileSaver.js"></script>
+
+@endsection
 
 @endsection
 
@@ -61,9 +65,20 @@
 	    </div>
   	</div>
   	<h1>Eliminar Parte</h1>
-  	<div id="panelEliminar">
-
-
-  		
+  	<div class="row">
+  		<form class="col s12" method="POST" action="/deleteparte" enctype="multipart/form-data">
+	    	{{ csrf_field() }}
+		    
+		    <div class="row">
+		       	<div class="input-field col s4" id='panelEliminar'>
+			    	
+		  		</div>
+		    </div> 
+		    <div class="row">		    	
+		    	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    				<i class="material-icons right">send</i>
+  				</button>
+		    </div>     
+	    </form>  		
   	</div>
 @endsection

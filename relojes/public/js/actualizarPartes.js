@@ -21,31 +21,34 @@ $(function() {
         $('select').material_select();
     });
 
-     $(document).ready(function(){
-        $('.carousel').carousel();
-    });
+     
  });
 
 function mostrarPartes(data){
     for(var parte in data) {
         
-        var carr = $("<div></div>");
-        carr.attr("class", "carousel");
+        var sel = $("<select></select>");
+        sel.attr("name", parte);
+        var index= $("<option disabled selected></option>");
+        index.attr("value","");
+        index.text("Seleccionar ".concat(parte));
+        sel.append(index);
         var i;
         for(i=0; i<data[parte].length;i++){
-            var item = $("<a></a>");
-            item.attr("class","carousel-item");
-            var imagen=$("<img></img>");
-            imagen.attr("href","#");
+            var item = $("<option></option>");
             var aux=data[parte];
-            imagen.attr("src",aux[i].imagen);
+            item.attr("value",aux[i].nombre);
+            item.text(aux[i].nombre);
 
-            item.append(imagen);
-            carr.append(item);
+            sel.append(item);
         }        
         
-        $("#panelEliminar").append(carr);    
+        $("#panelEliminar").append(sel);  
+
     }
 
+$(document).ready(function() {
+        $('select').material_select();
+    });
     
 }

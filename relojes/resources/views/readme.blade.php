@@ -6,6 +6,14 @@
 
 @endsection
 
+@section('scripts')
+
+    <script type="text/javascript" src="{{ asset('js/funcionesJavaScript.js') }}"></script>
+    <script language="javascript" src="js/html2canvas.js"></script>
+    <script language="javascript" src="js/FileSaver.js"></script>
+
+@endsection
+
 @section('content')
 
     <div class="container">

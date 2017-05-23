@@ -21,9 +21,19 @@ class PreestablecidoController extends Controller
     		'pre.Agujas.id' => 'required',
     	]);*/
 
-    	$nuevopre = new Preestablecido;
+        $modelo = request('pre');
 
-    	$modelo = request('pre');
+        $nuevopre = Preestablecido::updateOrCreate(
+                        ['nombre' => request('name'), 'usuario' => Auth::id()],
+                        [   'malla' => $modelo['Malla']['id'],
+                            'fondo' => $modelo['Fondo']['id'],
+                            'marco' => $modelo['Marco']['id'],
+                            'agujas' => $modelo['Agujas']['id'] ]
+                    );
+
+    	/*$nuevopre = new Preestablecido;
+
+    	
 
     	$nuevopre->nombre = request('name');
     	$nuevopre->malla = $modelo['Malla']['id'];
@@ -32,7 +42,7 @@ class PreestablecidoController extends Controller
     	$nuevopre->agujas = $modelo['Agujas']['id'];
     	$nuevopre->usuario = Auth::id();
 
-		$nuevopre->save();
+		$nuevopre->save();*/
     }
 
     public function eliminarPreestablecido(Request $request) {

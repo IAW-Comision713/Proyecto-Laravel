@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Preestablecido extends Model
 {
-    //
+    protected $guarded = [];
+    
     public function scopeGetPreestablecidos($query) {
         
         return $query->where('nombre', '<>', 'Vacio');

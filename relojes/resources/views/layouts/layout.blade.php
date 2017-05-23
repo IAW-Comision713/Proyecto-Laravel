@@ -11,7 +11,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <link rel="shortcut icon" href="img/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
         <link href="{{ asset('css/materialize.css') }}" rel="stylesheet"> 
         <link id="estilo" href="{{ asset('css/estilo1.css') }}" rel="stylesheet"> 

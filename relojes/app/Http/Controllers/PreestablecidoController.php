@@ -30,19 +30,6 @@ class PreestablecidoController extends Controller
                             'marco' => $modelo['Marco']['id'],
                             'agujas' => $modelo['Agujas']['id'] ]
                     );
-
-    	/*$nuevopre = new Preestablecido;
-
-    	
-
-    	$nuevopre->nombre = request('name');
-    	$nuevopre->malla = $modelo['Malla']['id'];
-    	$nuevopre->fondo = $modelo['Fondo']['id'];
-    	$nuevopre->marco = $modelo['Marco']['id'];
-    	$nuevopre->agujas = $modelo['Agujas']['id'];
-    	$nuevopre->usuario = Auth::id();
-
-		$nuevopre->save();*/
     }
 
     public function eliminarPreestablecido(Request $request) {

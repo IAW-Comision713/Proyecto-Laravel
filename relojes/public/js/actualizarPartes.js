@@ -13,42 +13,48 @@ $(function() {
         context: document.body,
         success: function (data) {
             personalizables = data;
-            mostrarPartes(data);
+            cargaropcionespartes("#selectparte");
+
+            cargaropcionespartes("#selectparteelim");
+
+            $("#selectparteelim").on('change', function() {
+
+                mostrarpartes($("#selectparteelim").val());
+            });
         }
     });
 
-     $(document).ready(function() {
-        $('select').material_select();
-    });
-
-     
+    $('select').material_select();
  });
 
-function mostrarPartes(data){
-    for(var parte in data) {
-        
-        var sel = $("<select></select>");
-        sel.attr("name", parte);
-        var index= $("<option disabled selected></option>");
-        index.attr("value","");
-        index.text("Seleccionar ".concat(parte));
-        sel.append(index);
-        var i;
-        for(i=0; i<data[parte].length;i++){
-            var item = $("<option></option>");
-            var aux=data[parte];
-            item.attr("value",aux[i].nombre);
-            item.text(aux[i].nombre);
+function cargaropcionespartes(sel) {
 
-            sel.append(item);
-        }        
-        
-        $("#panelEliminar").append(sel);  
+    selector = $(sel);
 
+    for(var parte in personalizables) {
+
+        var opcion = $("<option></option>");
+        opcion.attr("value", parte);
+        opcion.text(parte);
+        selector.append(opcion);
     }
 
-$(document).ready(function() {
-        $('select').material_select();
-    });
-    
+    $('select').material_select();
+}
+
+function mostrarpartes(parte) {
+
+    selector = $("#parteelim");
+    selector.empty();
+
+    var index;
+    for(index = 0; index < personalizables[parte].length; index++) {
+
+        var opcion = $("<option></option>");
+        opcion.attr("value", personalizables[parte][index].id);
+        opcion.text(personalizables[parte][index].nombre);
+        selector.append(opcion);
+    }
+
+    $('select').material_select();
 }

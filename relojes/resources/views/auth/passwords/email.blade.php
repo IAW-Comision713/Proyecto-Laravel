@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.layout')
+
+@section('title')
+
+    Reestablecer contraseña - Oh!Clock
+
+@endsection
 
 @section('content')
 <div class="container">

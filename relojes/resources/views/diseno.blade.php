@@ -8,15 +8,15 @@
 
 @section('css')
 
-    <link type="text/css" rel="stylesheet" href="css/estilospartes.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/estilospartes.css') }}">
 
 @endsection
 
 @section('scripts')
 
     <script type="text/javascript" src="{{ asset('js/funcionesJavaScript.js') }}"></script>
-    <script language="javascript" src="js/html2canvas.js"></script>
-    <script language="javascript" src="js/FileSaver.js"></script>
+    <script language="javascript" src="{{ asset('js/html2canvas.js') }}"></script>
+    <script language="javascript" src="{{ asset('js/FileSaver.js') }}"></script>
 
 @endsection
 
@@ -24,7 +24,7 @@
         
         <div id="contenedor" class="container row">      
 
-        <h4>Diseño (después pienso algo para poner aca pero quedaba medio vacio)</h4>
+        <h4>Armá un reloj a tu medida</h4>
 
             <div class="col s4">
                 <ul class="collapsible" data-collapsible="accordion" id="partes">                      
@@ -39,16 +39,29 @@
 
                 <p>
 
-                <button id="btnFav" class="  btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="Agregar como favorito" onclick="addFavoritos()"><i class="material-icons large">star</i></button>
-
-                <p>
-
-                <button id="btnAplicar" class="  btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="Aplicar favorito" onclick="aplicarFavorito()"><i class="material-icons large">restore</i></button>
-
-                <p>
-
                 <button id="btnDescargar" class="  btn-floating tooltipped " data-position="top" data-delay="50" data-tooltip="Descargar" onclick="descargarimagen()"><i class="material-icons large">system_update_alt</i></button>
 
+                <p>
+
+                <div id="compartir-box">
+
+                    <button id="btnCompartir" class="  btn-floating tooltipped " data-position="top" data-delay="50" data-tooltip="Compartir" onclick="mostrarlink()"><i class="material-icons large">share</i></button>
+
+                    <div id="compartir-form" class="z-depth-3 scale-transition scale-out">
+
+                        <div class="input-field">
+                            <input id="linkmodelo" type="text" readonly="">
+                            <label for="linkmodelo">Copiá y pegá el link para compartir</label>
+                        </div>
+                        <br>
+                        <button class="btn waves-effect waves-light" type="submit" name="action" onclick="copiarLink()">
+                            Copiar
+                            <i class="material-icons right">content_copy</i>
+                        </button>
+
+                    </div>
+                </div>
+                
                 <p>
                 
                 <div id="guardar-box">
@@ -56,10 +69,8 @@
 
                     <div id="guardar-form" class="z-depth-3 scale-transition scale-out">
 
-
-
                         <div class="input-field">
-                            <input id="nombremodelo" type="text" class="validate" minlength="1" maxlength="50" requierd>
+                            <input id="nombremodelo" type="text" class="validate" minlength="1" maxlength="50" required>
                             <label for="nombremodelo" data-error="El nombre del modelo no es válido!">Nombre de tu modelo</label>
                         </div>
                         <br>

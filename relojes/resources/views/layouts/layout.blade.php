@@ -20,8 +20,13 @@
 
         @yield('css')
 
+        <script>
+            var assetBaseUrl = "{{ asset('') }}";
+        </script>
+
         <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/materialize.js') }}"></script>        
+        <script type="text/javascript" src="{{ asset('js/materialize.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jsbase.js') }}"></script>                
 
 
         @yield('scripts')

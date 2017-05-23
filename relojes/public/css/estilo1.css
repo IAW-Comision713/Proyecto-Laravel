@@ -85,5 +85,24 @@ footer.page-footer {
   width: 200px;
   background-color: #b2dfdb;
   padding: 10 10 10 10;
+  position: absolute;
+}
+
+#guardar-box {
+
+  position: relative;
+}
+
+#compartir-form {
+
+  z-index: 2;
+  width: 300px;
+  background-color: #b2dfdb;
+  padding: 10 10 10 10;
+  position: absolute;
+}
+
+#compartir-box {
+
   position: relative;
 }

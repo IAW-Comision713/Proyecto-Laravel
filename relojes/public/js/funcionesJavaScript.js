@@ -27,7 +27,7 @@ $(function() {
         context: document.body,
         success: function (data) {
             preestablecidos = data;
-            cargarmenupreestablecidos(data.length);
+            cargarmenupreestablecidos();
         }
     });    
     
@@ -37,29 +37,26 @@ $(function() {
         success: function (data) {
             
             modelovacio = data;
+
+            $.ajax({
+                method: "post",
+                url: window.location.pathname,
+                context: document.body,
+                success: function (data) {
+                    
+                    modelo = data;
+                    cargarmodelo(data);
+                }
+            });
         }
     });
     
-    $('.parallax').parallax();
     $('.collapsible').collapsible();
-    
-    
-    if(localStorage.getItem("estilo") !== null){ 
-        
-        cambiarestilo(localStorage.getItem("estilo"));
-    }
 
     isLoggedIn(cargarpreestablecidosusuario);
 
-    $.ajax({
-        url: "/diseno/getModeloURL",
-        context: document.body,
-        success: function (data) {
-            
-            modelo = data;
-            cargarmodelo(data);
-        }
-    });
+    $("#linkmodelo").val(window.location.hostname+window.location.pathname);
+
 });
 
 function isLoggedIn(callback, attr) {
@@ -89,7 +86,7 @@ function cargarpartes(data) {
         
         $("#partes").append(item);
         
-        var imagen = $("<img id="+parte+" class='parte' src=img/vacio.png alt='Parte de un reloj'>");
+        var imagen = $("<img id="+parte+" class='parte' src='{{ asset('img/vacio.png') }}' alt='Parte de un reloj'>");
         
         $("#reloj").append(imagen);
     }
@@ -134,10 +131,12 @@ function actualizarReloj(parte, elegido) {
     
     modelo[parte] = elegido;
     
-    $("#"+parte).attr('src', elegido.imagen);
+    $("#"+parte).attr('src', assetBaseUrl+elegido.imagen);
+
+    actualizarlink();
 }
 
-function cargarmenupreestablecidos(cant) {
+function cargarmenupreestablecidos() {
     
     var lista = $("<ul></ul>");
     
@@ -241,34 +240,6 @@ function cargarmodelousuario(id) {
     cargarmodelo(preusuario[id]);
 }
 
-function addFavoritos(){
-    if(localStorage.getItem("favorito")!==null){
-        
-        Materialize.toast('Favorito reemplazado!', 4000);
-    }
-    else{
-        
-        Materialize.toast('Marcado como favorito!', 4000);       
-    }
-    
-    localStorage.setItem("favorito", JSON.stringify(modelo));
-}
-
-function aplicarFavorito() {
-    
-    if(localStorage.getItem("favorito")!==null){
-       
-        cargarmodelo(JSON.parse(localStorage.getItem("favorito")));
-        
-        Materialize.toast('Favorito cargado!', 4000);
-    }
-    else {
-        
-        Materialize.toast('No hay un modelo favorito guardado!', 4000);
-              
-    }
-}
-
 function descargarimagen() { 
         html2canvas($("#reloj"), {
             onrendered: function(canvas) {
@@ -280,14 +251,47 @@ function descargarimagen() {
             }
         });
  }
- 
- function cambiarestilo(id) {
-   
-        $("#estilo").attr("href", "css/estilo"+id+".css");
-        localStorage.setItem("estilo", id);
+
+function mostrarlink() {
+
+    $("#compartir-form").toggleClass("scale-out scale-in");
+}
+
+function actualizarlink() {
+
+    esvacio = false;
+
+    nuevolink = "/diseno"
+
+    for(var parte in modelo) {
         
-        $('.dropdown-button').dropdown('close');
- }
+        if(modelo[parte].id == modelovacio[parte].id)
+            esvacio = true;
+
+        nuevolink = nuevolink+"/"+parte.toLowerCase()+"/"+modelo[parte].id;
+    }
+
+    valor = $("#linkmodelo").value;
+
+    if(!esvacio)
+        $("#linkmodelo").val(window.location.hostname+nuevolink);
+    else
+        $("#linkmodelo").val(window.location.hostname);
+}
+
+function copiarLink() {
+
+    try {
+         $("#linkmodelo").select();
+        
+        var successful = document.execCommand('copy');
+        
+        Materialize.toast('Link copiado al portapapeles!', 4000);
+
+    } catch (err) {
+        Materialize.toast('No fue posible copiar en el portapapeles! Probá CTRL+C', 4000);
+    }
+}
 
 function mostrarguardar() { 
     
@@ -366,5 +370,3 @@ function eliminarModelo(logged, mod) {
     }
 
 }
-
-

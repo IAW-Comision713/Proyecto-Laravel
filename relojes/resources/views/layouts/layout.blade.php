@@ -33,7 +33,7 @@
         
     </head>
     <body>
-        <nav class="transparent">
+        <nav class="white">
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
@@ -41,7 +41,7 @@
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('register') }}">Registrate</a></li>
                                                            
                         @else
                             @if (Auth::id()==1)

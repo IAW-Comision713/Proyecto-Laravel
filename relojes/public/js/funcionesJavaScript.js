@@ -291,6 +291,8 @@ function copiarLink() {
     } catch (err) {
         Materialize.toast('No fue posible copiar en el portapapeles! Probá CTRL+C', 4000);
     }
+
+    mostrarlink();
 }
 
 function mostrarguardar() { 
@@ -310,6 +312,7 @@ function guardarModelo() {
         Object.assign(preusuario[nommod], modelo);
 
         mostrarguardar();
+        $("#nombremodelo").val("");
 
         isLoggedIn(almacenarModelo);
     }

@@ -1,3 +1,24 @@
+nav ul a,
+nav .brand-logo {
+  color: black;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
 #modelos{
     border: none;
     color: white;  
@@ -22,13 +43,24 @@
     color: black;
 }
 
-body{
+.card-panel {
     background-color: #fff9c4;
 }
 
 #contenedor{
-    background-color:white;
+    background-color:#fff9c4;
     size: auto;
+}
+
+#reloj{
+
+    background-color: white;
+
+}
+
+body {
+
+    background-color: #fff9c4;
 }
 
 #barra{
@@ -41,7 +73,7 @@ body{
     color: black;
 }
 
-#btnFav{
+#btnGuardar{
     background-color: #ffea00;
 }
 
@@ -49,7 +81,7 @@ body{
     background-color: #d50000;
 }
 
-#btnAplicar{
+#btnCompartir{
     background-color: #00c853;
 }
 
@@ -131,5 +163,15 @@ body{
 #compartir-box {
 
   position: relative;
+}
+
+.ancho {
+
+  width: 75%;
+}
+
+.angosto {
+
+  width: : 25%;
 }
 

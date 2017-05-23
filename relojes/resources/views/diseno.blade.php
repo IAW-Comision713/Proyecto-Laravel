@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Diseñá tu propio reloj
+    Diseñá tu propio reloj - Oh!Clock
 
 @endsection
 
@@ -88,12 +88,13 @@
             </div>
 
             <div id="preestablecidos" class="col s4">
-
+            @if(Auth::id() != 1)
                 <div id="botonera-preestablecidos">               
 
                     <h5>Modelos preestablecidos</h5>
 
                 </div>
+                @endif
 
                 <div id="usuario-preestablecidos">
                     

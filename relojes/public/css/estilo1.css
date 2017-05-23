@@ -106,3 +106,12 @@ footer.page-footer {
 
   position: relative;
 }
+
+.card-panel {
+    background-color: #e0f2f1;
+}
+
+.input-field {
+
+  color: black;
+}

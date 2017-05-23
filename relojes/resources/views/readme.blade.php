@@ -32,6 +32,13 @@
             - Html2canvas<br>
             - Materialize<br>
             - FileSaver<br>
+
+            <br>
+            Credenciales administrador:
+            <br>
+            mail: admin@admin.com
+            <br>
+            pass: admin0
         </div>
     </div>
 

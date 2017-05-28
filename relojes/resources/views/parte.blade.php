@@ -16,10 +16,7 @@
 
 @section('content')
 	
-	<p><p>
-	<div>
-
-	@if(Auth::id() == 1)
+	<p><p>	
 	<div class="row">
 	    <div class="col s12">
 	      <ul class="tabs">
@@ -118,17 +115,5 @@
 	    	</ul>
 	    </div>
 	  </div>
-	@else
-		
-
-		<div class="row center">
-			Para ver esta página, necesitás estar logueado como administrador.
-             <a id="btnVolver" href="/" class="btn-large waves-effect darken-4">Volver</a>
-             </div>
-
-
-	@endif
-
-	</div>
   	
 @endsection

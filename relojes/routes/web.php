@@ -34,10 +34,10 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
-Route::get('/parte/create', 'AddController@create')->name('editar');
-
-Route::post('/parte', 'AddController@store');
-Route::post('/deleteparte', 'AddController@destroy');
+//Edit Partes Routes
+Route::get('/parte/create', 'AddController@create')->name('editar')->middleware('is_admin');
+Route::post('/parte', 'AddController@store')->middleware('is_admin');
+Route::post('/deleteparte', 'AddController@destroy')->middleware('is_admin');
 
 Route::get('/partes/jsonPartes', 'PartesController@jsonPartes');
 Route::get('/partes/jsonVacio', 'PartesController@jsonVacio');

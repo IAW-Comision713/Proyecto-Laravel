@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use File;
 use App\Aguja;
 use App\Fondo;
 use App\Marco;
@@ -158,8 +159,12 @@ class AddController extends Controller
      */
     public function destroy(Request $request)
     {
-        if(is_null(request('nombreparte')) || is_null(request('parte')));
-            return redirect('/parte/create#eliminarparte')->with('message', 'No se seleccionó ninguna parte!!');
+        $this->validate($request, [
+            'nombreparte'=>'required',
+            'parte'=>'required']);
+
+        //if(is_null(request('nombreparte')) || is_null(request('parte')));
+        //    return redirect('/parte/create#eliminarparte')->with('message', 'No se seleccionó ninguna parte!!');
 
         $Model;
         $nombreparte = request('nombreparte');

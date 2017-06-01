@@ -50,69 +50,20 @@ class AddController extends Controller
 
         
         $parte = $request->parte;
-        //$ruta='img/partes/'.strtolower($parte).'/'.$request->imagen;
 
+        $NamespacedModel = '\\App\\' . $parte;
 
-        switch ($parte) {
-            case 'Agujas':
-
-                    if (isset($_FILES["fileimagen"]["tmp_name"])){
-                        $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/agujas/'.$request->imagen);
-                    }
-                    else throw new Exception("La parte no pudo ser cargada!");
-
-                    Agujas::create([
-                        'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/agujas/'.$request->imagen,
-                        ]);
-                    
-                    break;
-            case 'Fondo':
-
-                    if (isset($_FILES["fileimagen"]["tmp_name"])){
-                        $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/fondo/'.$request->imagen);
-                    }
-                    else throw new Exception("La parte no pudo ser cargada!");
-
-                    Fondo::create([
-                        'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/fondo/'.$request->imagen,
-                        ]);
-                    
-                    break;
-            case 'Malla':
-
-                    if (isset($_FILES["fileimagen"]["tmp_name"])){
-                        $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/malla/'.$request->imagen);
-                    }
-                    else throw new Exception("La parte no pudo ser cargada!"); 
-
-                    Malla::create([
-                        'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/malla/'.$request->imagen,
-                        ]);
-                                      
-                    break;
-            case 'Marco':
-
-                    if (isset($_FILES["fileimagen"]["tmp_name"])){
-                        $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/marco/'.$request->imagen);
-                    }
-                    else throw new Exception("La parte no pudo ser cargada!");
-
-                    Marco::create([
-                        'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/marco/'.$request->imagen,
-                        ]);
-                    
-                    break;
+        if (isset($_FILES["fileimagen"]["tmp_name"])) {
+            
+            $tmp_name = $_FILES['fileimagen']['tmp_name'];
+            move_uploaded_file($tmp_name, 'img/partes/'.$NamespacedModel::plural().'/'.$request->imagen);
         }
+        else throw new Exception("La parte no pudo ser cargada!");
 
-
+        $NamespacedModel::create([
+            'nombre'=>$request->nombre,
+            'imagen'=>'img/partes/'.$NamespacedModel::plural().'/'.$request->imagen,
+            ]);
 
         return redirect('/parte/create')->with('message','Parte agregada con éxito!!');       
     }
@@ -163,14 +114,11 @@ class AddController extends Controller
             'nombreparte'=>'required',
             'parte'=>'required']);
 
-        //if(is_null(request('nombreparte')) || is_null(request('parte')));
-        //    return redirect('/parte/create#eliminarparte')->with('message', 'No se seleccionó ninguna parte!!');
-
         $Model = request('nombreparte');
 
         $NamespacedModel = '\\App\\' . $Model;
 
-        if(Preestablecido::where($NamespacedModel::plural(), request('parte'))->exists()) {
+        if(Preestablecido::where(Str::lower($Model), request('parte'))->exists()) {
 
             return redirect('/parte/create#eliminarparte')->with('message', 'No es posible eliminar una parte que compone un modelo preestablecido!!');
         }
@@ -178,7 +126,7 @@ class AddController extends Controller
 
             $parte = $NamespacedModel::find(request('parte'));
             
-            File::delete('img/partes/'.Str::lower($Model).$parte->imagen);
+            File::delete($parte->imagen);
 
             $parte->delete();
 

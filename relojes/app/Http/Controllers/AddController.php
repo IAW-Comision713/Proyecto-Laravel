@@ -72,13 +72,13 @@ class AddController extends Controller
 
                     if (isset($_FILES["fileimagen"]["tmp_name"])){
                         $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/fondos/'.$request->imagen);
+                        move_uploaded_file($tmp_name, 'img/partes/fondo/'.$request->imagen);
                     }
                     else throw new Exception("La parte no pudo ser cargada!");
 
                     Fondo::create([
                         'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/fondos/'.$request->imagen,
+                        'imagen'=>'img/partes/fondo/'.$request->imagen,
                         ]);
                     
                     break;
@@ -86,13 +86,13 @@ class AddController extends Controller
 
                     if (isset($_FILES["fileimagen"]["tmp_name"])){
                         $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/mallas/'.$request->imagen);
+                        move_uploaded_file($tmp_name, 'img/partes/malla/'.$request->imagen);
                     }
                     else throw new Exception("La parte no pudo ser cargada!"); 
 
                     Malla::create([
                         'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/mallas/'.$request->imagen,
+                        'imagen'=>'img/partes/malla/'.$request->imagen,
                         ]);
                                       
                     break;
@@ -100,13 +100,13 @@ class AddController extends Controller
 
                     if (isset($_FILES["fileimagen"]["tmp_name"])){
                         $tmp_name = $_FILES['fileimagen']['tmp_name'];
-                        move_uploaded_file($tmp_name, 'img/partes/marcos/'.$request->imagen);
+                        move_uploaded_file($tmp_name, 'img/partes/marco/'.$request->imagen);
                     }
                     else throw new Exception("La parte no pudo ser cargada!");
 
                     Marco::create([
                         'nombre'=>$request->nombre,
-                        'imagen'=>'img/partes/marcos/'.$request->imagen,
+                        'imagen'=>'img/partes/marco/'.$request->imagen,
                         ]);
                     
                     break;
@@ -166,19 +166,11 @@ class AddController extends Controller
         //if(is_null(request('nombreparte')) || is_null(request('parte')));
         //    return redirect('/parte/create#eliminarparte')->with('message', 'No se seleccionó ninguna parte!!');
 
-        $Model;
-        $nombreparte = request('nombreparte');
-
-        //Solución rara para no cambiarle el nombre al modelo. Caso único en el que nombreparte sea Agujas
-        if(substr($nombreparte, -1) == 's')
-            $Model = substr($nombreparte, 0, -1);
-        else
-            $Model = $nombreparte;
-
+        $Model = request('nombreparte');
 
         $NamespacedModel = '\\App\\' . $Model;
 
-        if(Preestablecido::where(Str::lower($Model), request('parte'))->exists()) {
+        if(Preestablecido::where($NamespacedModel::plural(), request('parte'))->exists()) {
 
             return redirect('/parte/create#eliminarparte')->with('message', 'No es posible eliminar una parte que compone un modelo preestablecido!!');
         }
@@ -186,12 +178,11 @@ class AddController extends Controller
 
             $parte = $NamespacedModel::find(request('parte'));
             
-            File::delete('img/partes/'.Str::lower($Model).'s/'.$parte->imagen);
+            File::delete('img/partes/'.Str::lower($Model).$parte->imagen);
 
             $parte->delete();
 
             return redirect('/parte/create#eliminarparte')->with('message', 'Parte eliminada con éxito!!');
         }
-
     }
 }

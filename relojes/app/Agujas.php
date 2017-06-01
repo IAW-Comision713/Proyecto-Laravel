@@ -24,6 +24,11 @@ class Agujas extends Model
         
         return $query->where('id', '<>', $idvacio);
     }
+
+    public static function plural() {
+
+        return 'agujas';
+    }
     
     
 }

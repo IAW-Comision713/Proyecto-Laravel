@@ -23,4 +23,9 @@ class Malla extends Model
         
         return $query->where('id', '<>', $idvacio);
     }
+
+    public static function plural() {
+
+        return 'mallas';
+    }
 }

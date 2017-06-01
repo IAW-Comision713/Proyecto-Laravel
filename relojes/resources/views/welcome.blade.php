@@ -32,8 +32,8 @@
                     <div class="col s12 m4">
                         <div class="icon-block">
                             <h2 class="center amber-text text-darken-3"><i class="material-icons">web</i></h2>
-                            <h5 class="center">Proyecto 1</h5>
-                            <p class="light">Segunda parte del proyecto de la materia Ingeniería de Aplicaciones Web</p>
+                            <h5 class="center">Proyecto 2</h5>
+                            <p class="light">Segunda parte del proyecto de la materia Ingeniería de Aplicaciones Web. Primer cuatrimestre 2017.</p>
                         </div>
                     </div>
                     
@@ -42,7 +42,7 @@
                             <h2 class="center amber-text text-darken-3"><i class="material-icons">group</i></h2>
                             <h5 class="center">Qué hicimos</h5>
                             
-                            <p class="light">Nuestro producto elegido es un reloj de pulsera, al que se le puede personalizar la malla, el marco, el fondo (que contiene los números) y las agujas. Una vez armado el reloj es posible descargar una imagen del modelo o guardarla como favorito para que las opciones elegidas sean restauradas al volver a visitar la página.</p>
+                            <p class="light">Nuestro producto elegido es un reloj de pulsera, al que se le puede personalizar la malla, el marco, el fondo y las agujas. Una vez armado el reloj es posible descargar la imagen completa, compartir un link para volver a generarlo o guardar el modelo con un nombre para que las opciones elegidas sean restauradas al volver a visitar la página. Los usuarios registrados se benefician en que sus modelos son almacenados en la base de datos del sistema, y no se pierden al borrar historial/cache. </p>
                         </div>
                     </div>
 

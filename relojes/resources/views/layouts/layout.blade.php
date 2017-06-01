@@ -38,7 +38,7 @@
                 <a href="/" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/diseno">Diseño</a></li>
-                    <li><a href="/readme">Readme</a></li>
+                    
                     <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -68,6 +68,7 @@
                                 </ul>
                             </li>
                         @endif
+                    <li><a href="/readme">Readme</a></li>
                     <li><a id="btnEstilo" class='dropdown-button btn darken-4' href='#' data-activates='dropdownestilos'>Estilo</a>
                     
                         <ul id='dropdownestilos' class='dropdown-content'>

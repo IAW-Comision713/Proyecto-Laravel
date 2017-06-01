@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Malla;
 use App\Fondo;
 use App\Marco;
-use App\Aguja;
+use App\Agujas;
 use App\Preestablecido;
 
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class PartesController extends Controller
         $malla = Malla::getMallas()->get();
         $fondo = Fondo::getFondos()->get();
         $marco = Marco::getMarcos()->get();
-        $agujas = Aguja::getAgujas()->get();
+        $agujas = Agujas::getAgujas()->get();
         
         $listado = array();
         $listado["Malla"] = $malla;
@@ -38,7 +38,7 @@ class PartesController extends Controller
         $malla = Malla::find($p->pluck('malla'))->first();
         $fondo = Fondo::find($p->pluck('fondo'))->first();
         $marco = Marco::find($p->pluck('marco'))->first();
-        $agujas = Aguja::find($p->pluck('agujas'))->first();
+        $agujas = Agujas::find($p->pluck('agujas'))->first();
         
         $listado = new Preestablecido;
         $listado->Malla = $malla;
@@ -60,7 +60,7 @@ class PartesController extends Controller
             $malla = Malla::find($p->malla);
             $fondo = Fondo::find($p->fondo);
             $marco = Marco::find($p->marco);
-            $agujas = Aguja::find($p->agujas);
+            $agujas = Agujas::find($p->agujas);
             
             $pre = new Preestablecido;
             $pre->Malla = $malla;
@@ -85,7 +85,7 @@ class PartesController extends Controller
             $malla = Malla::find($p->malla);
             $fondo = Fondo::find($p->fondo);
             $marco = Marco::find($p->marco);
-            $agujas = Aguja::find($p->agujas);
+            $agujas = Agujas::find($p->agujas);
             
             $pre = new Preestablecido;
             $pre->Malla = $malla;

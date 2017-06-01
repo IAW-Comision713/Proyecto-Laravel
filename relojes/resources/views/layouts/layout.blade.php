@@ -37,6 +37,7 @@
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo"><img id="img-logo" src="{{ asset('img/logo.png') }}" alt="logo">Clock</a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="/diseno">Diseño</a></li>
                     <li><a href="/readme">Readme</a></li>
                     <!-- Authentication Links -->
                         @if (Auth::guest())
@@ -73,6 +74,9 @@
                             <li><a href="javascript:cambiarestilo(1);">Estilo 1</a></li>
                             <li><a href="javascript:cambiarestilo(2);">Estilo 2</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a id="btnPopup" class="btn-floating waves-effect waves-light darken-4" onclick="mostrarPopup()"><i class="material-icons">info_outline</i></a>
                     </li>
                     
                 </ul>

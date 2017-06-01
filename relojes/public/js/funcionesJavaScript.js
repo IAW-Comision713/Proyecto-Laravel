@@ -39,8 +39,7 @@ $(function() {
             modelovacio = data;
 
             $.ajax({
-                method: "post",
-                url: window.location.pathname,
+                url: "/getmodelo"+window.location.pathname,
                 context: document.body,
                 success: function (data) {
                     
@@ -55,7 +54,7 @@ $(function() {
 
     isLoggedIn(cargarpreestablecidosusuario);
 
-    $("#linkmodelo").val(window.location.hostname+window.location.pathname);
+    $("#linkmodelo").val(window.location.hostname+':'+window.location.port+window.location.pathname);
 
 });
 
@@ -86,7 +85,7 @@ function cargarpartes(data) {
         
         $("#partes").append(item);
         
-        var imagen = $("<img id="+parte+" class='parte' src='{{ asset('img/vacio.png') }}' alt='Parte de un reloj'>");
+        var imagen = $("<img id="+parte+" class='parte' src='"+assetBaseUrl+"img/vacio.png' alt='Parte de un reloj'>");
         
         $("#reloj").append(imagen);
     }
@@ -274,9 +273,9 @@ function actualizarlink() {
     valor = $("#linkmodelo").value;
 
     if(!esvacio)
-        $("#linkmodelo").val(window.location.hostname+nuevolink);
+        $("#linkmodelo").val(window.location.hostname+':'+window.location.port+nuevolink);
     else
-        $("#linkmodelo").val(window.location.hostname);
+        $("#linkmodelo").val(window.location.hostname+':'+window.location.port);
 }
 
 function copiarLink() {

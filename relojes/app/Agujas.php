@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Preestablecido;
 
-class Aguja extends Model
+class Agujas extends Model
 {
 	/**
      * The attributes that are mass assignable.

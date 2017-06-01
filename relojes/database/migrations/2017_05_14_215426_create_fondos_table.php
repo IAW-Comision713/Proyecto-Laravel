@@ -29,6 +29,6 @@ class CreateFondosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('numeros');
+        Schema::dropIfExists('fondos');
     }
 }

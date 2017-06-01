@@ -22,9 +22,9 @@ Route::get('/diseno', function () {
     return view('diseno');
 })->name('diseno');
 
-Route::post('/diseno', 'DisenoController@getModeloVacioURL');
+Route::get('/getmodelo/diseno', 'DisenoController@getModeloVacioURL');
 
-Route::post('/diseno/malla/{malla}/fondo/{fondo}/marco/{marco}/agujas/{agujas}', 'DisenoController@getModeloURL');
+Route::get('/getmodelo/diseno/malla/{malla}/fondo/{fondo}/marco/{marco}/agujas/{agujas}', 'DisenoController@getModeloURL');
 
 Route::get('/diseno/malla/{malla}/fondo/{fondo}/marco/{marco}/agujas/{agujas}', function () {
     return view('diseno');

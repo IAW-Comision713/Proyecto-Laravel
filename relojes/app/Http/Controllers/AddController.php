@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use File;
-use App\Aguja;
+use App\Agujas;
 use App\Fondo;
 use App\Marco;
 use App\Malla;
@@ -54,7 +54,7 @@ class AddController extends Controller
 
 
         switch ($parte) {
-            case 'Aguja':
+            case 'Agujas':
 
                     if (isset($_FILES["fileimagen"]["tmp_name"])){
                         $tmp_name = $_FILES['fileimagen']['tmp_name'];
@@ -62,7 +62,7 @@ class AddController extends Controller
                     }
                     else throw new Exception("La parte no pudo ser cargada!");
 
-                    Aguja::create([
+                    Agujas::create([
                         'nombre'=>$request->nombre,
                         'imagen'=>'img/partes/agujas/'.$request->imagen,
                         ]);
